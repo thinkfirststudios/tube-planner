@@ -1,0 +1,20 @@
+{
+  "_comment": "Transcribed from a Quest requisition photo. Verify against the lab's test directory before real use. dedicatedTube on 809 is a placeholder.",
+  "tests": [
+    { "code": "10231", "name": "Comprehensive Metabolic Panel", "shortName": "CMP", "specimen": "SS" },
+    { "code": "10165", "name": "Basic Metabolic Panel", "shortName": "BMP", "specimen": "SS" },
+    { "code": "10256", "name": "Hepatic Function Panel", "shortName": "Hepatic panel", "specimen": "SS" },
+    { "code": "7600", "name": "Lipid Panel, Standard", "shortName": "Lipid panel", "specimen": "SS" },
+    { "code": "6399", "name": "CBC (includes Diff/Plt)", "shortName": "CBC", "specimen": "L" },
+    { "code": "496", "name": "Hemoglobin A1c", "shortName": "A1c", "specimen": "L" },
+    { "code": "899", "name": "TSH", "shortName": "TSH", "specimen": "SS" },
+    { "code": "457", "name": "Ferritin", "shortName": "Ferritin", "specimen": "SS" },
+    { "code": "4420", "name": "C-Reactive Protein (CRP)", "shortName": "CRP", "specimen": "SS" },
+    { "code": "561", "name": "Insulin", "shortName": "Insulin", "specimen": "SS" },
+    { "code": "17306", "name": "Vitamin D, 25-Hydroxy", "shortName": "Vitamin D", "specimen": "SS" },
+    { "code": "8847", "name": "PT with INR", "shortName": "PT/INR", "specimen": "B" },
+    { "code": "763", "name": "PTT, Activated", "shortName": "PTT", "specimen": "B" },
+    { "code": "374", "name": "CK, Total", "shortName": "CK", "specimen": "SS" },
+    { "code": "809", "name": "Sed Rate by Modified Westergren", "shortName": "Sed rate", "specimen": "L", "dedicatedTube": true }
+  ]
+}

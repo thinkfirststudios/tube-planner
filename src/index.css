@@ -1,0 +1,82 @@
+@import 'tailwindcss';
+@config '../tailwind.config.ts';
+
+/*
+  Design tokens. Every color in the product comes from here.
+  A dark theme is a swap of these values under a [data-theme="dark"] selector.
+*/
+:root {
+  /* Ground and ink */
+  --color-ground: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-rule: #dddad2;
+  --color-ink: #15171a;
+  --color-ink-2: #4a4f55;
+  --color-blood: #8b2b24;
+
+  /* Cap colors: the only color in the product. Always paired with a text label. */
+  --cap-light-blue: #8cc3e8;
+  --cap-red: #c9362f;
+  --cap-gold: #d8a31a;
+  --cap-green: #2f8a55;
+  --cap-lavender: #a48bcf;
+  --cap-gray: #8e949a;
+
+  /* Tube glass */
+  --tube-glass: #ffffff;
+  --tube-outline: var(--color-ink-2);
+
+  /* Layout */
+  --nav-height: 64px;
+  --bar-height: 84px;
+
+  color-scheme: light;
+}
+
+/* Base styles stay in a layer so Tailwind utilities can override them. */
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: 'Public Sans', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 23px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 600;
+  }
+
+  /* Safe-area padding for full-screen PWA on notched phones */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+}

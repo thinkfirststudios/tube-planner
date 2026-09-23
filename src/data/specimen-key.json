@@ -1,0 +1,38 @@
+{
+  "_comment": "PLACEHOLDER values. Verify against the lab's specimen key before real use. Set verified to true only after that check. Add tube types by adding entries to codes; no code change needed.",
+  "verified": false,
+  "masterSerumTube": true,
+  "masterSerumCode": "SS",
+  "codes": {
+    "B": {
+      "tube": "Light blue top",
+      "shortName": "Light blue",
+      "additive": "Sodium citrate",
+      "color": "#8EC5E8",
+      "cap": "light-blue",
+      "drawOrder": 2,
+      "maxTestsPerTube": 2,
+      "serum": false
+    },
+    "SS": {
+      "tube": "Serum Separator (SST)",
+      "shortName": "SST",
+      "additive": "Clot activator + gel",
+      "color": "#E3B53B",
+      "cap": "gold",
+      "drawOrder": 3,
+      "maxTestsPerTube": 4,
+      "serum": true
+    },
+    "L": {
+      "tube": "Lavender Top",
+      "shortName": "Lavender",
+      "additive": "EDTA",
+      "color": "#A98BC9",
+      "cap": "lavender",
+      "drawOrder": 5,
+      "maxTestsPerTube": 3,
+      "serum": false
+    }
+  }
+}

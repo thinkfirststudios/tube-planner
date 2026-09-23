@@ -1,0 +1,11 @@
+{
+  "6399-10231": {
+    "tubes": [
+      { "code": "SS", "name": "Serum Separator (SST)", "count": 2 },
+      { "code": "L", "name": "Lavender Top", "count": 1 }
+    ],
+    "source": "lab",
+    "recorded": "2026-09-20",
+    "notes": "Includes SS/1 Master Serum tube"
+  }
+}

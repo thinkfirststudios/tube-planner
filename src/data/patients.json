@@ -1,0 +1,98 @@
+{
+  "_comment": "All patients are FICTIONAL. Do not add real patient data.",
+  "demoDate": "2026-09-22",
+  "patients": [
+    {
+      "id": "P001",
+      "name": "Margaret Ellison",
+      "dob": "1948-03-14",
+      "address": "101 Demo Lane, Pasadena",
+      "visitTime": "08:00",
+      "orderedCodes": ["10231", "6399", "7600", "899"],
+      "drawHistory": [
+        {
+          "date": "2026-06-18",
+          "orderedCodes": ["10231", "6399", "7600"],
+          "tubes": [
+            { "code": "SS", "count": 2 },
+            { "code": "L", "count": 1 }
+          ],
+          "note": "Good veins, left arm"
+        }
+      ]
+    },
+    {
+      "id": "P002",
+      "name": "Robert Tanaka",
+      "dob": "1961-07-02",
+      "address": "202 Sample Ave, Pasadena",
+      "visitTime": "09:00",
+      "orderedCodes": ["8847"],
+      "drawHistory": []
+    },
+    {
+      "id": "P003",
+      "name": "Delores Reyes",
+      "dob": "1955-11-23",
+      "address": "303 Test Court, Altadena",
+      "visitTime": "10:00",
+      "orderedCodes": ["10165", "496", "561"],
+      "drawHistory": []
+    },
+    {
+      "id": "P004",
+      "name": "Harold Whitfield",
+      "dob": "1943-01-30",
+      "address": "404 Mock St, South Pasadena",
+      "visitTime": "11:30",
+      "orderedCodes": ["6399", "8847", "763", "10231"],
+      "drawHistory": []
+    },
+    {
+      "id": "P005",
+      "name": "Priya Nair",
+      "dob": "1967-05-09",
+      "address": "505 Fiction Blvd, Pasadena",
+      "visitTime": "13:00",
+      "orderedCodes": ["17306", "457", "4420", "10256"],
+      "drawHistory": []
+    },
+    {
+      "id": "P006",
+      "name": "James O'Connor",
+      "dob": "1938-09-17",
+      "address": "606 Placeholder Dr, Glendale",
+      "visitTime": "14:30",
+      "orderedCodes": ["6399", "99999"],
+      "drawHistory": []
+    },
+    {
+      "id": "P007",
+      "name": "Evelyn Marsh",
+      "dob": "1952-06-21",
+      "address": "707 Example Way, Pasadena",
+      "visitTime": "15:30",
+      "orderedCodes": ["10231", "374", "4420", "6399", "809"],
+      "drawHistory": [
+        {
+          "date": "2026-07-09",
+          "orderedCodes": ["10231", "374", "4420", "6399", "809"],
+          "tubes": [
+            { "code": "SS", "count": 1 },
+            { "code": "L", "count": 2 }
+          ],
+          "note": "Sed rate needed its own tube"
+        }
+      ]
+    },
+    {
+      "id": "P008",
+      "name": "Frank Delgado",
+      "dob": "1959-02-11",
+      "address": "808 Demo Circle, Pasadena",
+      "visitTime": "16:30",
+      "orderedCodes": ["10231", "6399"],
+      "drawHistory": []
+    }
+  ]
+}
