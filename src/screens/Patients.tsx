@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../state';
 import { lastDraw } from '../lib/draw';
-import { ageOn, formatDate, formatTime, plural } from '../lib/format';
-import { demoDate } from '../lib/seed';
+import { ageOn, formatDate, formatTime, plural, todayIso } from '../lib/format';
 import { Button, ScreenHeader, Sheet } from '../components/ui';
 
 export function Patients() {
@@ -38,7 +37,7 @@ export function Patients() {
                   <span className="text-caption text-ink-2">{formatTime(p.visitTime)}</span>
                 </div>
                 <p className="text-caption text-ink-2">
-                  {ageOn(p.dob, demoDate)} yrs · DOB {formatDate(p.dob)} · {p.address}
+                  {ageOn(p.dob, todayIso())} yrs · DOB {formatDate(p.dob)} · {p.address}
                 </p>
                 {last ? (
                   <p className="mt-2 text-body">

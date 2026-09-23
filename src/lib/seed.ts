@@ -21,8 +21,6 @@ export const seedConfirmed: ConfirmedOrders = confirmedJson as ConfirmedOrders;
 
 export const seedPatients: Patient[] = patientsJson.patients as Patient[];
 
-export const demoDate: string = patientsJson.demoDate;
-
 export function seedData(): TubeData {
   return {
     tests: seedTests,

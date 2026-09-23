@@ -1,6 +1,6 @@
 {
   "_comment": "All patients are FICTIONAL. Do not add real patient data.",
-  "demoDate": "2026-09-22",
+  "_schedule": "Visits are shown as today's schedule, on whatever date the device reads.",
   "patients": [
     {
       "id": "P001",

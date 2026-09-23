@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useApp, useIsTablet } from '../state';
 import { diffTubes, lastDraw } from '../lib/draw';
 import { ageOn, explainResolution, formatDate, formatTime, plural, todayIso } from '../lib/format';
-import { demoDate } from '../lib/seed';
 import type { DrawRecord, TubeCount } from '../lib/types';
 import type { VisitProgress } from '../lib/storage';
 import { ConfidencePill } from '../components/ConfidencePill';
@@ -78,7 +77,7 @@ export function PatientVisit() {
         <p className="text-label text-ink-2">{formatTime(p.visitTime)}</p>
         <h1 className="font-display text-display">{p.name}</h1>
         <p className="text-body text-ink-2">
-          {ageOn(p.dob, demoDate)} yrs · DOB {formatDate(p.dob)}
+          {ageOn(p.dob, todayIso())} yrs · DOB {formatDate(p.dob)}
         </p>
         <p className="text-body text-ink-2">{p.address}</p>
       </header>

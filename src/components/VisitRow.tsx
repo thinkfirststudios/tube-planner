@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { Patient, Resolution } from '../lib/types';
-import { ageOn, formatTime, plural } from '../lib/format';
-import { demoDate } from '../lib/seed';
+import { ageOn, formatTime, plural, todayIso } from '../lib/format';
 import { ConfidencePill } from './ConfidencePill';
 import { TubeRow } from './TubeRow';
 
@@ -31,7 +30,7 @@ export function VisitRow({ patient, resolution, completed, selected }: VisitRowP
         </div>
         <div className="mt-1 text-tube">{patient.name}</div>
         <div className="mb-3 text-caption text-ink-2">
-          {ageOn(patient.dob, demoDate)} yrs · {plural(patient.orderedCodes.length, 'test')} · {patient.address}
+          {ageOn(patient.dob, todayIso())} yrs · {plural(patient.orderedCodes.length, 'test')} · {patient.address}
         </div>
         <TubeRow tubes={resolution.tubes} confidence={resolution.confidence} />
         {resolution.warnings.length > 0 && (

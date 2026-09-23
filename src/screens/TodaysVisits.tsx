@@ -3,9 +3,8 @@ import { useApp } from '../state';
 import { VisitRow } from '../components/VisitRow';
 import { BottomBar } from '../components/BottomBar';
 import { Button, ScreenHeader } from '../components/ui';
-import { formatDate, plural } from '../lib/format';
+import { formatDate, plural, todayIso } from '../lib/format';
 import { totalTubes } from '../lib/resolveTubes';
-import { demoDate } from '../lib/seed';
 
 export function TodaysVisits({ selectedId }: { selectedId?: string }) {
   const { patients, resolutions, state } = useApp();
@@ -21,7 +20,7 @@ export function TodaysVisits({ selectedId }: { selectedId?: string }) {
         title="Today"
         subtitle={
           <>
-            {weekday(demoDate)}, {formatDate(demoDate, false)} · {plural(patients.length, 'visit')} · {plural(tubes, 'tube')}
+            {weekday(todayIso())}, {formatDate(todayIso(), false)} · {plural(patients.length, 'visit')} · {plural(tubes, 'tube')}
             {done > 0 && <> · {done} done</>}
             {estimated > 0 && (
               <span className="block text-label">
