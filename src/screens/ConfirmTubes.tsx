@@ -6,7 +6,7 @@ import { resolveTubes } from '../lib/resolveTubes';
 import { todayIso } from '../lib/format';
 import { byDrawOrder, makeTube } from '../lib/estimate';
 import type { ConfirmedOrder, TubeCount } from '../lib/types';
-import { Tube, capLabel } from '../components/Tube';
+import { Tube } from '../components/Tube';
 import { BottomBar } from '../components/BottomBar';
 import { Button, ScreenHeader, Stepper } from '../components/ui';
 
@@ -131,7 +131,7 @@ export function ConfirmTubes({ signature, initial, initialSource, initialNotes, 
             <Tube cap={t.cap} state="empty" count={t.count} size="md" label={t.shortName} />
             <div className="min-w-0 flex-1">
               <h3 className={`text-tube ${t.count > 0 ? '' : 'text-ink-2'}`}>{t.shortName}</h3>
-              <p className="text-caption text-ink-2">{capLabel[t.cap]}</p>
+              <p className="text-caption text-ink-2">{t.name}</p>
             </div>
             <Stepper big value={t.count} onChange={(n) => setCounts((c) => ({ ...c, [t.code]: n }))} label={t.shortName} />
           </li>

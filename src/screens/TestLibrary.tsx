@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useApp } from '../state';
 import { seedTestList } from '../lib/seed';
 import { byDrawOrder, makeTube } from '../lib/estimate';
-import { Tube, capLabel } from '../components/Tube';
+import { Tube } from '../components/Tube';
 import { ScreenHeader } from '../components/ui';
 
 export function TestLibrary() {
@@ -86,7 +86,7 @@ export function TestLibrary() {
               <div>
                 <p className="text-tube">{t.name}</p>
                 <p className="text-caption text-ink-2">
-                  {capLabel[t.cap]} · {t.type.additive} · lab code {t.code}
+                  {t.type.additive} · lab code {t.code}
                 </p>
                 <p className="text-label">
                   Draw order {t.drawOrder} · up to {t.type.maxTestsPerTube} tests per tube

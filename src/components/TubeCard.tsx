@@ -1,5 +1,5 @@
 import type { Confidence, ResolvedTube, Test } from '../lib/types';
-import { Tube, capLabel } from './Tube';
+import { Tube } from './Tube';
 import { Stepper } from './ui';
 
 interface TubeCardProps {
@@ -57,7 +57,7 @@ export function TubeCard({
             {actual} {tube.shortName}
           </h3>
           <p className="text-caption text-ink-2">
-            {capLabel[tube.cap]} · {tube.name}
+            {tube.name}
           </p>
           {testNames.length > 0 && <p className="mt-2 text-body">{testNames.join(', ')}</p>}
           {tube.notes.length > 0 && (

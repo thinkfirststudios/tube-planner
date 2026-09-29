@@ -1,7 +1,7 @@
 import { useApp } from '../state';
 import { packList } from '../lib/packList';
 import { plural } from '../lib/format';
-import { Tube, capLabel } from '../components/Tube';
+import { Tube } from '../components/Tube';
 import { ScreenHeader, Stepper } from '../components/ui';
 
 export function PackList() {
@@ -52,7 +52,7 @@ export function PackList() {
               <h2 className="text-tube">
                 {l.total} {l.shortName}
               </h2>
-              <p className="text-caption text-ink-2">{capLabel[l.cap]}</p>
+              <p className="text-caption text-ink-2">{l.name}</p>
               <p className="text-label">
                 {l.needed} for {plural(l.visits, 'visit')} + {l.spares} {l.spares === 1 ? 'spare' : 'spares'}
               </p>

@@ -15,6 +15,9 @@
     { "code": "8847", "name": "PT with INR", "shortName": "PT/INR", "specimen": "B" },
     { "code": "763", "name": "PTT, Activated", "shortName": "PTT", "specimen": "B" },
     { "code": "374", "name": "CK, Total", "shortName": "CK", "specimen": "SS" },
+    { "code": "622", "name": "Magnesium", "shortName": "Magnesium", "specimen": "SS" },
+    { "code": "718", "name": "Phosphate (as Phosphorus)", "shortName": "Phosphorus", "specimen": "SS" },
+    { "code": "896", "name": "Triglycerides", "shortName": "Triglycerides", "specimen": "SS" },
     { "code": "809", "name": "Sed Rate by Modified Westergren", "shortName": "Sed rate", "specimen": "L", "dedicatedTube": true }
   ]
 }

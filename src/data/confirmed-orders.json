@@ -7,5 +7,23 @@
     "source": "lab",
     "recorded": "2026-09-20",
     "notes": "Includes SS/1 Master Serum tube"
+  },
+  "622-718-6399-10231": {
+    "tubes": [
+      { "code": "SS", "name": "Serum Separator (SST)", "count": 1 },
+      { "code": "L", "name": "Lavender Top", "count": 1 }
+    ],
+    "source": "nurse",
+    "recorded": "2026-09-29",
+    "notes": "Mag and Phos run from the CMP SST"
+  },
+  "622-718-896-6399-10231": {
+    "tubes": [
+      { "code": "SS", "name": "Serum Separator (SST)", "count": 1 },
+      { "code": "L", "name": "Lavender Top", "count": 1 }
+    ],
+    "source": "nurse",
+    "recorded": "2026-09-29",
+    "notes": "Mag, Phos and Triglycerides run from the CMP SST"
   }
 }

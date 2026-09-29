@@ -8,21 +8,12 @@ const sizes = {
   lg: { w: 40, h: 100 },
 } as const;
 
-export const capLabel: Record<CapColor, string> = {
-  'light-blue': 'Light blue cap',
-  red: 'Red cap',
-  gold: 'Gold cap',
-  green: 'Green cap',
-  lavender: 'Lavender cap',
-  gray: 'Gray cap',
-};
-
 interface TubeProps {
   cap: CapColor;
   state: TubeState;
   count?: number;
   size?: keyof typeof sizes;
-  /** Accessible name, e.g. "SST". Cap color is announced with it. */
+  /** Accessible name, e.g. "SST" */
   label: string;
 }
 
@@ -43,7 +34,7 @@ export function Tube({ cap, state, count, size = 'md', label }: TubeProps) {
       height={h}
       viewBox="0 0 40 100"
       role="img"
-      aria-label={`${count !== undefined ? `${count} ` : ''}${label}, ${capLabel[cap].toLowerCase()}, ${stateText}`}
+      aria-label={`${count !== undefined ? `${count} ` : ''}${label}, ${stateText}`}
       className="shrink-0"
     >
       {/* Body */}
