@@ -16,6 +16,7 @@ export function VisitRow({ patient, resolution, completed, selected }: VisitRowP
     <li>
       <Link
         to={`/patients/${patient.id}`}
+        data-tour={`visit-${patient.id}`}
         aria-current={selected ? 'page' : undefined}
         className={`block min-h-primary rounded-2xl border-2 bg-surface p-4 ${selected ? 'border-ink' : 'border-rule'} ${
           completed ? 'opacity-70' : ''

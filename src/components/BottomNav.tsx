@@ -56,6 +56,7 @@ export function BottomNav() {
             <li key={item.to} className="flex-1">
               <NavLink
                 to={item.to}
+                data-tour={item.to === '/' ? 'nav-today' : `nav-${item.to.slice(1)}`}
                 aria-current={active ? 'page' : undefined}
                 className={`flex min-h-[60px] flex-col items-center justify-center gap-0.5 text-caption ${
                   active ? 'text-ink' : 'text-ink-2'

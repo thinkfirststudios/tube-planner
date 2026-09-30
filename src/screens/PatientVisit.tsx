@@ -99,7 +99,7 @@ export function PatientVisit() {
           <h2 id="tests-heading" className="font-display text-section">
             Tests ordered
           </h2>
-          <Link to={`/patients/${p.id}/order`} className="inline-flex min-h-tap items-center rounded-xl px-3 text-label underline underline-offset-4">
+          <Link to={`/patients/${p.id}/order`} data-tour="edit-order" className="inline-flex min-h-tap items-center rounded-xl px-3 text-label underline underline-offset-4">
             Edit order
           </Link>
         </div>

@@ -80,3 +80,23 @@
     padding-top: env(safe-area-inset-top);
   }
 }
+
+/* Guided tour: outline the thing to tap next. */
+[data-tour-active] {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+  border-radius: 12px;
+  animation: tour-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes tour-pulse {
+  50% {
+    outline-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-tour-active] {
+    animation: none;
+  }
+}

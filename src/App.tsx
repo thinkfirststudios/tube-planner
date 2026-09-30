@@ -3,6 +3,7 @@ import { HashRouter, Navigate, Route, Routes, matchPath, useLocation } from 'rea
 import { AppProvider, useIsTablet } from './state';
 import { DemoBanner } from './components/DemoBanner';
 import { BottomNav } from './components/BottomNav';
+import { TourPanel, TourProvider } from './components/Tour';
 import { TodaysVisits } from './screens/TodaysVisits';
 import { PackList } from './screens/PackList';
 import { PatientVisit } from './screens/PatientVisit';
@@ -17,7 +18,9 @@ export default function App() {
   return (
     <AppProvider>
       <HashRouter>
-        <Shell />
+        <TourProvider>
+          <Shell />
+        </TourProvider>
       </HashRouter>
     </AppProvider>
   );
@@ -79,6 +82,7 @@ function Shell() {
           </div>
         )}
       </main>
+      <TourPanel />
       <BottomNav />
     </div>
   );

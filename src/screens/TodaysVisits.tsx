@@ -3,6 +3,7 @@ import { useApp } from '../state';
 import { VisitRow } from '../components/VisitRow';
 import { BottomBar } from '../components/BottomBar';
 import { Button, ScreenHeader } from '../components/ui';
+import { TourButton } from '../components/Tour';
 import { formatDate, plural, todayIso } from '../lib/format';
 import { totalTubes } from '../lib/resolveTubes';
 
@@ -18,6 +19,7 @@ export function TodaysVisits({ selectedId }: { selectedId?: string }) {
     <div className="flex flex-1 flex-col">
       <ScreenHeader
         title="Today"
+        right={<TourButton />}
         subtitle={
           <>
             {weekday(todayIso())}, {formatDate(todayIso(), false)} · {plural(patients.length, 'visit')} · {plural(tubes, 'tube')}

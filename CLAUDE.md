@@ -9,7 +9,7 @@ A demo PWA for mobile phlebotomists. It shows which blood tubes to draw for each
 - Live site: https://thinkfirststudios.github.io/tube-planner/ Repo: https://github.com/thinkfirststudios/tube-planner (public).
 - Pushing to `main` redeploys automatically through `.github/workflows/deploy.yml` (tests, build, Pages), in about 1 minute. **Push only when the user says to.** After a deploy, the user needs to close and reopen the app, or refresh twice, to load the new version.
 - The next build (change log, undo, audit leftovers) is **planned but waiting for the user's "go"**. See TODO.md.
-- **Backlog, don't build until asked:** a guided tutorial ("Take the tour").
+- Guided tour ("Take the tour") is built. Tour results go to a Google Sheet through `feedback/apps-script.gs`, only when the tester agrees and the `FEEDBACK_URL` repository variable is set. See README "Guided tour".
 
 ## Decisions already made
 

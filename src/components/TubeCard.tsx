@@ -82,6 +82,7 @@ export function TubeCard({
         <button
           type="button"
           onClick={onToggleDrawn}
+          data-tour={step === 1 ? 'draw-first' : undefined}
           disabled={disabled}
           aria-pressed={drawn}
           aria-label={drawn ? `Step ${step}, ${tube.shortName}: drawn. Tap to undo.` : `Mark step ${step}, ${tube.shortName}, as drawn`}

@@ -54,8 +54,40 @@ The logic lives in `src/lib/` and has no React in it, so it can be tested on its
   - visit progress
   - completed draws
   - spare-tube settings
-- Nothing leaves the device. There is no backend, no auth and no analytics.
+- Nothing leaves the device, except tour results from people who agree to share them (see below). There is no backend of its own, no auth and no analytics.
 - **Patients → Reset demo data** clears it.
+
+## Guided tour
+
+**Take the tour** on the Today screen walks through the app in 7 short steps: open a visit, check off a tube, edit an order, and open the Pack list. A panel above the bottom menu shows each step and outlines what to tap. Task steps finish on their own once the person has done them, and every step can be skipped. **End tour** stops early.
+
+- The tour runs on fresh demo data. The person's own data is saved when it starts and put back when it ends, even after a reload mid-tour.
+- Steps live in `src/lib/tour.ts`. A step highlights elements by their `data-tour` attribute.
+
+### Tour results
+
+When a results URL is configured, the tour first asks "Help improve this app?". Nothing is sent unless the person says yes. For people who agree, each tour sends **one row** to a Google Sheet:
+
+- when it started, whether it was finished, and the step where the person stopped
+- each step's outcome and time, e.g. `done 12s` or `skipped 40s`
+- the end survey: ease (1–5), what was confusing, whether they'd use it, and an optional name or role
+- phone or tablet, and the app version
+
+It never sends patient data, and the demo patients are fictional anyway. If the phone is offline, results wait on the device and send on the next launch or reconnect.
+
+Without a results URL, the tour still works and collects nothing.
+
+**Set up the results sheet (one time):**
+
+1. Create a Google Sheet, for example "Tube Planner tour results".
+2. In the sheet, open **Extensions → Apps Script**. Replace the code with `feedback/apps-script.gs`, then save.
+3. **Deploy → New deployment**. Type: **Web app**. Execute as: **Me**. Who has access: **Anyone**. Approve the permissions and copy the web app URL, which ends in `/exec`.
+4. On GitHub, open the repo's **Settings → Secrets and variables → Actions → Variables**. Add a repository variable named `FEEDBACK_URL` with that URL.
+5. Push to `main`, or re-run the deploy workflow. The next build includes the URL.
+
+For a local build, put `VITE_FEEDBACK_URL=<url>` in `.env.local`.
+
+The URL ends up in the public app, so anyone could send rows to the sheet. The script only accepts rows with a `session` field, caps text length and blocks spreadsheet formulas. That's enough for a demo, but a production version would need a real backend with authentication.
 
 ## Production requirements (HIPAA)
 
@@ -72,10 +104,11 @@ This demo stores only fictional data, on the device, without protection. **A pro
 ```
 src/
   data/        seed JSON: tests, specimen key, confirmed orders, patients (all lab rules live here)
-  lib/         pure logic: signature, estimate, resolveTubes, packList, draw history, storage
-  components/  Tube illustration, TubeCard, TubeRow, ConfidencePill, bars, banner
+  lib/         pure logic: signature, estimate, resolveTubes, packList, draw history, storage, tour, feedback
+  components/  Tube illustration, TubeCard, TubeRow, ConfidencePill, bars, banner, Tour (panel, start and survey sheets)
   screens/     Today, Pack list, Patient visit, Confirm tubes, Edit order, Saved orders, Patients, Test library
   sw.ts        service worker (precaches the whole app for offline use)
+feedback/      Google Apps Script that writes tour results to a Google Sheet
 tests/         Vitest unit tests
 scripts/       make-icons.mjs regenerates the PWA icons (npm run icons)
 ```

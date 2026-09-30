@@ -88,6 +88,7 @@ export function EditOrder() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by name or code"
+          data-tour="test-search"
           autoComplete="off"
           className="mt-1 min-h-primary w-full rounded-xl border-2 border-ink bg-surface px-4 text-body"
         />

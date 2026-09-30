@@ -34,6 +34,8 @@ interface AppContextValue {
   setVisit(patientId: string, progress: VisitProgress | undefined): void;
   setSpares(spares: AppState['spares']): void;
   resetDemo(): void;
+  /** Swap in a whole state, e.g. fresh demo data for the tour and back again */
+  replaceState(next: AppState): void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -76,6 +78,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         clearState();
         setState(emptyState());
       },
+      replaceState: (next) => setState(next),
     }),
     [state, data, patients, resolutions, saved, update],
   );
