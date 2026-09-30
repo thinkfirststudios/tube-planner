@@ -37,11 +37,19 @@ export function PackList() {
             {estimated} of {day.length} visits are estimated. Totals may change once they're confirmed.
           </p>
         )}
-        {warned.length > 0 && (
-          <p className="mt-2 text-label text-blood">
-            {warned.map((p) => p.name).join(', ')}: order has a test code that isn't recognised, so it isn't counted here.
-          </p>
-        )}
+        {warned.map((p) => {
+          const r = resolutions[p.id];
+          const codes = r.warnings.map((w) => w.code);
+          const one = codes.length === 1;
+          return (
+            <p key={p.id} className="mt-2 text-label text-blood">
+              {p.name}: test {one ? 'code' : 'codes'} {codes.join(', ')} {one ? "isn't" : "aren't"} recognised
+              {r.confidence === 'estimated'
+                ? `, so no tube is counted for ${one ? 'it' : 'them'}.`
+                : '. Check with the lab.'}
+            </p>
+          );
+        })}
       </section>
 
       <ul className="flex flex-col gap-3 px-4">
