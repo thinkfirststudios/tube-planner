@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useApp, useIsTablet } from '../state';
 import { codesFromSignature } from '../lib/signature';
 import { resolveTubes } from '../lib/resolveTubes';
@@ -34,6 +34,8 @@ export function ConfirmTubesForPatient() {
 export function ConfirmTubesForOrder() {
   const { sig = '' } = useParams();
   const { data } = useApp();
+  // Opened from Look up tubes: go back there, not to Saved orders.
+  const from = useLocation().state as { back?: string; label?: string } | null;
   const entry = data.confirmed[sig];
   const initial = entry ? entry.tubes : resolveTubes(codesFromSignature(sig), data).tubes;
   if (!sig) return <Missing to="/orders" />;
@@ -43,8 +45,8 @@ export function ConfirmTubesForOrder() {
       initial={initial.map((t) => ({ code: t.code, name: t.name, count: t.count }))}
       initialSource={entry?.source ?? 'lab'}
       initialNotes={entry?.notes ?? ''}
-      backTo="/orders"
-      backLabel="Saved orders"
+      backTo={from?.back ?? '/orders'}
+      backLabel={from?.label ?? 'Saved orders'}
     />
   );
 }

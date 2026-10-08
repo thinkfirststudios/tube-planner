@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useApp, useIsTablet } from '../state';
 import { resolveTubes } from '../lib/resolveTubes';
 import { normalizeCodes } from '../lib/signature';
-import { seedPatients, seedTestList } from '../lib/seed';
+import { seedPatients } from '../lib/seed';
 import { ConfidencePill } from '../components/ConfidencePill';
 import { TubeRow } from '../components/TubeRow';
-import { Tube } from '../components/Tube';
+import { TestSearch } from '../components/TestSearch';
 import { BottomBar } from '../components/BottomBar';
 import { Button, ScreenHeader, Warning } from '../components/ui';
 
@@ -15,7 +14,6 @@ export function EditOrder() {
   const { patient, data, setOrder, setVisit, state } = useApp();
   const navigate = useNavigate();
   const tablet = useIsTablet();
-  const [query, setQuery] = useState('');
 
   const p = patient(id);
   if (!p) return null;
@@ -33,19 +31,8 @@ export function EditOrder() {
   };
   const add = (code: string) => {
     if (!codes.includes(code)) change([...codes, code]);
-    setQuery('');
   };
   const remove = (code: string) => change(codes.filter((c) => c !== code));
-
-  const q = query.trim().toLowerCase();
-  const results = q
-    ? seedTestList.filter(
-        (t) =>
-          !codes.includes(t.code) &&
-          (t.code.includes(q) || t.name.toLowerCase().includes(q) || t.shortName?.toLowerCase().includes(q)),
-      )
-    : [];
-  const rawCode = /^\d+$/.test(q) && !data.tests[q] && !codes.includes(q) ? q : null;
 
   return (
     <div className="flex flex-1 flex-col">
@@ -78,59 +65,7 @@ export function EditOrder() {
         </div>
       )}
 
-      <section className="px-4 pt-5">
-        <label htmlFor="test-search" className="text-label">
-          Add a test
-        </label>
-        <input
-          id="test-search"
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search by name or code"
-          data-tour="test-search"
-          autoComplete="off"
-          className="mt-1 min-h-primary w-full rounded-xl border-2 border-ink bg-surface px-4 text-body"
-        />
-        {(results.length > 0 || rawCode) && (
-          <ul className="mt-2 flex flex-col gap-2">
-            {results.map((t) => {
-              const tube = data.key.codes[t.specimen];
-              return (
-                <li key={t.code}>
-                  <button
-                    type="button"
-                    onClick={() => add(t.code)}
-                    className="flex min-h-primary w-full items-center gap-3 rounded-xl border-2 border-rule bg-surface px-4 text-left"
-                  >
-                    {tube && <Tube cap={tube.cap} state="empty" size="sm" label={tube.shortName ?? tube.tube} />}
-                    <span className="flex-1">
-                      <span className="block text-label">{t.name}</span>
-                      <span className="block text-caption text-ink-2">
-                        {t.code} · {tube?.shortName ?? t.specimen}
-                      </span>
-                    </span>
-                    <span className="text-label">Add</span>
-                  </button>
-                </li>
-              );
-            })}
-            {rawCode && (
-              <li>
-                <button
-                  type="button"
-                  onClick={() => add(rawCode)}
-                  className="flex min-h-primary w-full items-center justify-between rounded-xl border-2 border-dashed border-ink-2 bg-surface px-4 text-left"
-                >
-                  <span className="text-label">Add code {rawCode} anyway</span>
-                  <span className="text-caption text-ink-2">Not in the test library</span>
-                </button>
-              </li>
-            )}
-          </ul>
-        )}
-        {q && results.length === 0 && !rawCode && <p className="mt-2 text-body text-ink-2">No tests match "{query}".</p>}
-      </section>
+      <TestSearch exclude={codes} onAdd={add} tourId="test-search" />
 
       <section className="px-4 pt-5">
         <h2 className="font-display text-section">On this order</h2>

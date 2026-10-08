@@ -1,12 +1,20 @@
 {
   "6399-10231": {
     "tubes": [
+      { "code": "SS", "name": "Serum Separator (SST)", "count": 1 },
+      { "code": "L", "name": "Lavender Top", "count": 1 }
+    ],
+    "source": "lab",
+    "recorded": "2026-09-28"
+  },
+  "374-809-4420-6399-10231": {
+    "tubes": [
       { "code": "SS", "name": "Serum Separator (SST)", "count": 2 },
       { "code": "L", "name": "Lavender Top", "count": 1 }
     ],
     "source": "lab",
-    "recorded": "2026-09-20",
-    "notes": "Includes SS/1 Master Serum tube"
+    "recorded": "2026-09-29",
+    "notes": "Includes SS/1 Master Serum tube. Sed rate shares the CBC lavender"
   },
   "622-718-6399-10231": {
     "tubes": [

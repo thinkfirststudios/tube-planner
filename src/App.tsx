@@ -12,6 +12,7 @@ import { EditOrder } from './screens/EditOrder';
 import { SavedOrders } from './screens/SavedOrders';
 import { TestLibrary } from './screens/TestLibrary';
 import { Patients } from './screens/Patients';
+import { LookUp } from './screens/LookUp';
 
 // Hash routes: reliable for an offline PWA on any static host, no server rewrites needed.
 export default function App() {
@@ -30,6 +31,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<TodaysVisits />} />
+      <Route path="/lookup" element={<LookUp />} />
       <Route path="/pack" element={<PackList />} />
       <Route path="/orders" element={<SavedOrders />} />
       <Route path="/orders/:sig" element={<ConfirmTubesForOrder />} />

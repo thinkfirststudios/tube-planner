@@ -16,8 +16,9 @@ describe('resolveTubes with seed data', () => {
     ['P004', [['B', 1], ['SS', 2], ['L', 1]], 'estimated'],
     ['P005', [['SS', 2]], 'estimated'],
     ['P006', [['L', 1]], 'estimated'],
-    ['P007', [['SS', 2], ['L', 2]], 'estimated'],
-    ['P008', [['SS', 2], ['L', 1]], 'lab'],
+    // Quest collection pages: CMP+CBC+CRP+CK+ESR adds a Master Serum SST; the sed rate shares the CBC lavender.
+    ['P007', [['SS', 2], ['L', 1]], 'lab'],
+    ['P008', [['SS', 1], ['L', 1]], 'lab'],
   ];
 
   it.each(cases)('%s resolves to the expected tubes in order of draw', (id, expected, confidence) => {
@@ -48,14 +49,13 @@ describe('confirmed first', () => {
     const broken: TubeData = { ...data, tests: {}, key: { ...data.key, masterSerumTube: false } };
     const r = resolveTubes(orderOf('P008'), broken);
     expect(r.confidence).toBe('lab');
-    expect(counts(r)).toEqual([['SS', 2], ['L', 1]]);
+    expect(counts(r)).toEqual([['SS', 1], ['L', 1]]);
     expect(r.confirmed?.source).toBe('lab');
   });
 
-  it('the estimator alone agrees with the lab for P008', () => {
-    const lab = resolveTubes(orderOf('P008'), data);
-    const est = estimateTubes(orderOf('P008'), data);
-    expect(counts(est)).toEqual(counts(lab));
+  it('the lab count wins where the estimator is more cautious (P008: no Master Serum tube)', () => {
+    expect(counts(estimateTubes(orderOf('P008'), data))).toEqual([['SS', 2], ['L', 1]]);
+    expect(counts(resolveTubes(orderOf('P008'), data))).toEqual([['SS', 1], ['L', 1]]);
   });
 
   it('matches regardless of the order codes were entered in', () => {
@@ -106,10 +106,10 @@ describe('confirmed first', () => {
 });
 
 describe('estimator rules', () => {
-  it('removing dedicatedTube from 809 drops P007 to 1 lavender', () => {
-    const tests = { ...data.tests, '809': { ...data.tests['809'], dedicatedTube: false } };
-    const r = resolveTubes(orderOf('P007'), { ...data, tests });
-    expect(counts(r)).toEqual([['SS', 2], ['L', 1]]);
+  it('a dedicatedTube test gets a tube of its own', () => {
+    const tests = { ...data.tests, '809': { ...data.tests['809'], dedicatedTube: true } };
+    expect(counts(estimateTubes(['6399', '809'], { ...data, tests }))).toEqual([['L', 2]]);
+    expect(counts(estimateTubes(['6399', '809'], data))).toEqual([['L', 1]]);
   });
 
   it('adds tubes when a group exceeds maxTestsPerTube', () => {

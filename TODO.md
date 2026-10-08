@@ -17,12 +17,8 @@ On your phone, close and reopen the app first so it has the latest version.
 
 ## 2. Questions only you can answer
 
-- [ ] **CBC + CMP: 1 SST or 2?** The saved entry, taken from an older Quest collection page, says 2, where the second is the "Master Serum" tube. But your Magnesium and Phosphorus orders use just 1 SST.
-  - This also decides the estimate for any order with a serum test. For example, Margaret Ellison shows 2 SST only because of the master serum rule.
-  - If the answer is 1, the saved entry changes and the master serum rule may be turned off.
-  - **New evidence (2026-09-29):** Req 0004583 (CMP + CBC) = 1 SST + 1 Lavender. Req 0004588 lists only CMP + CBC too, but shows 2 SST (incl. "SS/1 Master Serum") + 1 Lavender, and its order screen also had CRP 4420, CK 374 and Sed rate 809. Likely: the Master Serum SST holds the extra serum tests, and the sed rate shares the CBC lavender.
-  - **Waiting on:** is that order screen the order Req 0004588 was printed for? If yes: CBC + CMP → 1 SST + 1 Lavender; add 374-809-4420-6399-10231 → 2 SST + 1 Lavender (lab); drop `dedicatedTube` on 809. Evelyn Marsh has exactly that 5-test order.
-  - **Next time you're at the lab computer:** for one order, photograph both the order screen (Profiles/Tests) and its printed Specimen Collection Page, with the **Req #** visible on both. Or ask Dee (text drafted 2026-09-29).
+- [x] **CBC + CMP: 1 SST or 2?** Settled from the two Quest collection pages (2026-10-07): CBC + CMP = 1 SST + 1 Lavender. CMP + CBC + CRP + CK + Sed rate = 2 SST (incl. "SS/1 Master Serum") + 1 Lavender, with the sed rate sharing the CBC lavender. Both saved as lab confirmed; `dedicatedTube` dropped from 809.
+  - Still open: exactly when Quest adds the Master Serum tube. The estimator still adds one to any order with a serum test, which is one SST too many on small orders. Dee's test draw (section 6) should help.
 - [ ] **The "wrong time" you mentioned:** the date is fixed, but the time problem is still open. Which screen, what does it show, and what did you expect?
 
 ## 3. Say "go" on the next build (or change the suggestions)
@@ -60,3 +56,15 @@ Audit question: put `schedule` on the patient next to `orderedCodes` (my suggest
 - [ ] Set up the results sheet: create the Google Sheet, paste in `feedback/apps-script.gs`, deploy it as a web app, and add the URL as the `FEEDBACK_URL` repository variable on GitHub. The steps are in the README.
 - [ ] Take the tour on your phone once it's live, and check that your row shows up in the sheet.
 - [ ] Decide who to send it to, and write a short message inviting them.
+
+## 6. Dee's test (2026-10-07)
+
+Dee asked to try it with a real set of tests: CBCD, CMP, ESR, CRP, CK. Built and pushed for this:
+
+- **Look up tubes** tab: type the tests, get each tube, count and color in order of draw. No patient needed.
+- Search understands abbreviations (CBCD, ESR, CPK, Mag, TG and more). They're the `aliases` in `src/data/tests.json`.
+- Dee's five tests give **2 SST + 1 Lavender, Lab confirmed**.
+
+- [ ] Check it on your phone: Look up tab → type CBCD, CMP, ESR, CRP, CK → 2 SST + 1 Lavender.
+- [ ] Reply to Dee's email with how to try it.
+- [ ] Ask Dee to send the Quest collection page from that draw, to confirm the count.

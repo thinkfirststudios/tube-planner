@@ -19,6 +19,11 @@ const items: Item[] = [
     ),
   },
   {
+    to: '/lookup',
+    label: 'Look up',
+    icon: <path d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM15.5 15.5 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />,
+  },
+  {
     to: '/pack',
     label: 'Pack list',
     icon: <path d="M4 8h16v12H4zM8 8V5h8v3M4 13h16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />,

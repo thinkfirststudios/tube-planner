@@ -79,9 +79,9 @@
           "orderedCodes": ["10231", "374", "4420", "6399", "809"],
           "tubes": [
             { "code": "SS", "count": 1 },
-            { "code": "L", "count": 2 }
+            { "code": "L", "count": 1 }
           ],
-          "note": "Sed rate needed its own tube"
+          "note": "Lab asked for a Master Serum SST next time"
         }
       ]
     },

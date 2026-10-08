@@ -32,13 +32,15 @@ The lab's own system already calculates tubes. It prints them on the Specimen Co
 
 Saving with **Confirm tubes** on a visit records the lab's count for that signature, so every later order with the same tests resolves to it right away. Tube count depends on the tests, not the patient, so this reuse is safe.
 
+**Look up tubes** (a tab in the bottom menu) does the same lookup without a patient: type the tests on an order and it lists each tube with its count, in order of draw. Search matches codes, names and the abbreviations nurses use (each test's `aliases` in `tests.json`, such as CBCD, ESR or CPK). The tests are kept in the URL, so coming back to the screen keeps them.
+
 The logic lives in `src/lib/` and has no React in it, so it can be tested on its own. Every lab rule lives in `src/data/`, so corrections never need a code change. To add a tube type, add an entry to `codes` in `specimen-key.json`.
 
 ## Data caveats
 
 - `src/data/tests.json` was transcribed from a Quest requisition photo. **Verify it against the lab's test directory before real use.**
 - `src/data/specimen-key.json` holds **placeholder** values (tests per tube, draw order, master serum rule). The app shows an "Unverified" flag while `verified` is `false`. Set it to `true` only after checking every value against the lab's specimen key.
-- `dedicatedTube` on test 809 (Sed rate) is a placeholder.
+- Quest collection pages show that CMP + CBC needs 1 SST, but CMP + CBC + CRP + CK + Sed rate needs 2 (one is an "SS/1 Master Serum" tube), and the sed rate shares the CBC lavender. Both are saved as lab-confirmed lists. The estimator's master serum rule adds an SST to any order with a serum test, so on small orders it is one SST too cautious. When Quest adds the Master Serum tube is still an open question.
 - The key's `color` hex values are for reference only. The UI draws caps from the design tokens in `src/index.css`, using each type's `cap` field.
 - Open questions the estimator leaves room for:
   - Whether nurses usually have the lab's collection page before a draw, or only for electronically submitted orders.

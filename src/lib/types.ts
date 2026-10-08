@@ -12,6 +12,8 @@ export interface Test {
   specimen: string;
   /** Test always needs a tube of its own */
   dedicatedTube?: boolean;
+  /** Other names nurses type for this test, e.g. "ESR" for the sed rate */
+  aliases?: string[];
   handlingNote?: string;
 }
 
