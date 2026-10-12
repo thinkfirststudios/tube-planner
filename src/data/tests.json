@@ -18,6 +18,17 @@
     {"code": "622", "name": "Magnesium", "shortName": "Magnesium", "specimen": "SS", "aliases": ["Mg", "Mag"]},
     {"code": "718", "name": "Phosphate (as Phosphorus)", "shortName": "Phosphorus", "specimen": "SS", "aliases": ["Phos", "PO4", "Phosphorus"]},
     {"code": "896", "name": "Triglycerides", "shortName": "Triglycerides", "specimen": "SS", "aliases": ["TG", "Trigs"]},
-    {"code": "809", "name": "Sed Rate by Modified Westergren", "shortName": "Sed rate", "specimen": "L", "aliases": ["ESR", "Sedimentation rate", "Westergren"]}
+    {"code": "809", "name": "Sed Rate by Modified Westergren", "shortName": "Sed rate", "specimen": "L", "aliases": ["ESR", "Sedimentation rate", "Westergren"]},
+    {"code": "921", "name": "Vitamin A (Retinol)", "shortName": "Vitamin A", "specimen": "R", "aliases": ["Retinol", "Vit A"], "handlingNote": "Vitamin A: protect from light. Pour serum into an amber or foil-wrapped tube, refrigerated. Overnight fast."},
+    {"code": "927", "name": "Vitamin B12 (Cobalamin)", "shortName": "B12", "specimen": "SS", "aliases": ["Cobalamin", "Vit B12"]},
+    {"code": "931", "name": "Vitamin E (Tocopherol)", "shortName": "Vitamin E", "specimen": "R", "aliases": ["Tocopherol", "Vit E"], "handlingNote": "Vitamin E: protect from light. Pour serum into an amber or foil-wrapped tube, refrigerated. Overnight fast."},
+    {"code": "36585", "name": "Vitamin K", "shortName": "Vitamin K", "specimen": "L", "dedicatedTube": true, "aliases": ["Vit K", "Vitamin K1", "Phylloquinone"], "handlingNote": "Vitamin K: its own lavender. Spin within 1 hour, amber tube, frozen. Fast 8 hours."},
+    {"code": "92888", "name": "Vitamin D, 25-Hydroxy, Fractionated (D2, D3), LC/MS/MS", "shortName": "Vitamin D2/D3", "specimen": "SS", "aliases": ["Vitamin D3", "Vitamin D2", "Vit D fractionated", "25OH D2 D3", "QuestAssureD"]},
+    {"code": "11254", "name": "Fatty Acid Panel, Essential (C12-C22), Serum", "shortName": "EFA panel", "specimen": "R", "aliases": ["EFA", "Essential fatty acids", "Fatty acids"], "handlingNote": "EFA panel: no gel tubes. Separate the serum and freeze it. Overnight fast, no alcohol for 24 hours."},
+    {"code": "3484", "name": "Chromium, Plasma", "shortName": "Chromium", "specimen": "RBE", "aliases": ["Cr"], "handlingNote": "Chromium: draw one royal blue tube first and throw it away. Pour (don't pipette) into a metal-free tube, refrigerated."},
+    {"code": "363", "name": "Copper", "shortName": "Copper", "specimen": "RBE", "aliases": ["Cu"], "handlingNote": "Copper: separate within 2 hours into a metal-free vial."},
+    {"code": "626", "name": "Manganese, Blood", "shortName": "Manganese", "specimen": "RBE", "dedicatedTube": true, "aliases": ["Mn"], "handlingNote": "Manganese: whole blood. Send in the original royal blue tube, refrigerated."},
+    {"code": "5507", "name": "Selenium", "shortName": "Selenium", "specimen": "RBE", "aliases": ["Se"], "handlingNote": "Selenium: spin within 1 hour, separate into a trace-element vial, refrigerated. No vitamin or mineral supplements for 3 days."},
+    {"code": "945", "name": "Zinc", "shortName": "Zinc", "specimen": "RBE", "aliases": ["Zn"], "handlingNote": "Zinc: separate within 2 hours into a metal-free vial."}
   ]
 }

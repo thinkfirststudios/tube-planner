@@ -68,3 +68,20 @@ Dee asked to try it with a real set of tests: CBCD, CMP, ESR, CRP, CK. Built and
 - [ ] Check it on your phone: Look up tab → type CBCD, CMP, ESR, CRP, CK → 2 SST + 1 Lavender.
 - [ ] Reply to Dee's email with how to try it.
 - [ ] Ask Dee to send the Quest collection page from that draw, to confirm the count.
+
+## 7. Dee's November draw (2026-10-12)
+
+The TPN order's nutrition labs (Vitamins A, B12, E, K, D2/D3, EFA panel) and trace elements (Chromium, Copper, Manganese, Selenium, Zinc) are every 6 months, in May and November. In November they're drawn with the every-other-week labs (CBC, CMP, Mag, Phos) and the monthly Triglycerides.
+
+Added from Quest's national test directory (MASTER compendium; local labs can differ): codes 921, 927, 931, 36585, 92888, 11254, 3484, 363, 626, 5507, 945, with handling notes. New tube types: Red top, no gel (R) and Royal blue K2EDTA (RBE).
+
+Estimate for all 16 tests: **10 tubes**. 2 red top (A, E, EFA), 3 SST (incl. master serum), 3 royal blue (Manganese on its own), 2 lavender (Vitamin K on its own). Marked Estimated.
+
+Known gaps in the estimate:
+- The chromium discard royal blue tube isn't counted; it's in the handling note.
+- Tests per tube is a placeholder. Quest's real limit is serum volume, so the SST and red top counts could be one off either way.
+- Not confirmed: whether one royal blue can be split across copper, zinc, selenium and chromium, or whether the EFA panel could use plasma from the Vitamin K lavender.
+
+- [ ] Say **push** to put it live.
+- [ ] Reply to Dee: how to look it up, and ask for the Quest collection page from the November draw.
+- [ ] When that page arrives, save it as lab confirmed (Look up → Enter the lab's count).

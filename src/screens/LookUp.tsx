@@ -101,6 +101,11 @@ export function LookUp() {
                     <p className="text-caption text-ink-2">{t.name}</p>
                     {tests.length > 0 && <p className="mt-1 text-body">{tests.join(', ')}</p>}
                     {t.notes.length > 0 && <p className="text-caption text-ink-2">{t.notes.join(' · ')}</p>}
+                    {t.tests.map((c) => data.tests[c]?.handlingNote).filter(Boolean).map((h) => (
+                      <p key={h} className="mt-1 text-label">
+                        {h}
+                      </p>
+                    ))}
                   </div>
                 </li>
               );

@@ -151,7 +151,7 @@ describe('estimator rules', () => {
       ...data.key,
       codes: {
         ...data.key.codes,
-        GY: { tube: 'Gray top', additive: 'Sodium fluoride', cap: 'gray' as const, drawOrder: 6, maxTestsPerTube: 2 },
+        GY: { tube: 'Gray top', additive: 'Sodium fluoride', cap: 'gray' as const, drawOrder: 7, maxTestsPerTube: 2 },
       },
     };
     const tests = { ...data.tests, '2': { code: '2', name: 'Glucose', specimen: 'GY' } };

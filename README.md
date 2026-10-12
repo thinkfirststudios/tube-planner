@@ -41,6 +41,7 @@ The logic lives in `src/lib/` and has no React in it, so it can be tested on its
 - `src/data/tests.json` was transcribed from a Quest requisition photo. **Verify it against the lab's test directory before real use.**
 - `src/data/specimen-key.json` holds **placeholder** values (tests per tube, draw order, master serum rule). The app shows an "Unverified" flag while `verified` is `false`. Set it to `true` only after checking every value against the lab's specimen key.
 - Quest collection pages show that CMP + CBC needs 1 SST, but CMP + CBC + CRP + CK + Sed rate needs 2 (one is an "SS/1 Master Serum" tube), and the sed rate shares the CBC lavender. Both are saved as lab-confirmed lists. The estimator's master serum rule adds an SST to any order with a serum test, so on small orders it is one SST too cautious. When Quest adds the Master Serum tube is still an open question.
+- The nutrition and trace element tests (Vitamins A, B12, E, K, D2/D3, EFA panel, Chromium, Copper, Manganese, Selenium, Zinc) and their handling notes come from Quest's national test directory. Their tube counts are estimates: tests per tube is a stand-in for Quest's real limit, which is serum volume. The chromium discard tube is in a handling note, not in the count.
 - The key's `color` hex values are for reference only. The UI draws caps from the design tokens in `src/index.css`, using each type's `cap` field.
 - Open questions the estimator leaves room for:
   - Whether nurses usually have the lab's collection page before a draw, or only for electronically submitted orders.

@@ -58,3 +58,23 @@ describe("Dee's test order: CBCD, CMP, ESR, CRP, CK", () => {
     ]);
   });
 });
+
+describe("Dee's November draw: every-other-week labs plus the 6-monthly nutrition and trace element labs", () => {
+  const typed = ['CBCD', 'CMP', 'Mag', 'Phos', 'TG', 'Vitamin A', 'B12', 'Vitamin E', 'Vitamin K', 'Vitamin D3', 'EFA', 'Cr', 'Cu', 'Mn', 'Se', 'Zn'];
+
+  it('finds every test from what a nurse would type', () => {
+    expect(typed.map(first)).toEqual(['6399', '10231', '622', '718', '896', '921', '927', '931', '36585', '92888', '11254', '3484', '363', '626', '5507', '945']);
+  });
+
+  it('estimates the tubes, in order of draw, with no unknown tests', () => {
+    const r = resolveTubes(typed.map(first), seedData());
+    expect(r.confidence).toBe('estimated');
+    expect(r.warnings).toEqual([]);
+    expect(r.tubes.map((t) => [t.shortName, t.count])).toEqual([
+      ['Red top', 2], // Vitamin A, Vitamin E, EFA panel
+      ['SST', 3], // CMP, Mag, Phos, TG, B12, Vitamin D2/D3, + master serum
+      ['Royal blue', 3], // Chromium, Copper, Selenium, Zinc, + Manganese on its own
+      ['Lavender', 2], // CBC, + Vitamin K on its own
+    ]);
+  });
+});

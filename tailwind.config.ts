@@ -18,6 +18,7 @@ export default {
           red: 'var(--cap-red)',
           gold: 'var(--cap-gold)',
           green: 'var(--cap-green)',
+          'royal-blue': 'var(--cap-royal-blue)',
           lavender: 'var(--cap-lavender)',
           gray: 'var(--cap-gray)',
         },

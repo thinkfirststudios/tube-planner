@@ -1,6 +1,6 @@
 // Shared types. No React here: lib/ must stay testable on its own.
 
-export type CapColor = 'light-blue' | 'red' | 'gold' | 'green' | 'lavender' | 'gray';
+export type CapColor = 'light-blue' | 'red' | 'gold' | 'green' | 'lavender' | 'royal-blue' | 'gray';
 
 export type Confidence = 'lab' | 'nurse' | 'estimated';
 

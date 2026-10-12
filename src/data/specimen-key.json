@@ -14,15 +14,35 @@
       "maxTestsPerTube": 2,
       "serum": false
     },
+    "R": {
+      "tube": "Red Top, no gel",
+      "shortName": "Red top",
+      "additive": "Clot activator, no gel",
+      "color": "#C9362F",
+      "cap": "red",
+      "drawOrder": 3,
+      "maxTestsPerTube": 2,
+      "serum": true
+    },
     "SS": {
       "tube": "Serum Separator (SST)",
       "shortName": "SST",
       "additive": "Clot activator + gel",
       "color": "#E3B53B",
       "cap": "gold",
-      "drawOrder": 3,
+      "drawOrder": 4,
       "maxTestsPerTube": 4,
       "serum": true
+    },
+    "RBE": {
+      "tube": "Royal Blue Top, K2EDTA (trace element)",
+      "shortName": "Royal blue",
+      "additive": "K2EDTA, trace-element free",
+      "color": "#2346A8",
+      "cap": "royal-blue",
+      "drawOrder": 5,
+      "maxTestsPerTube": 2,
+      "serum": false
     },
     "L": {
       "tube": "Lavender Top",
@@ -30,7 +50,7 @@
       "additive": "EDTA",
       "color": "#A98BC9",
       "cap": "lavender",
-      "drawOrder": 5,
+      "drawOrder": 6,
       "maxTestsPerTube": 3,
       "serum": false
     }
