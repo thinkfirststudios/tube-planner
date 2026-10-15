@@ -82,6 +82,6 @@ Known gaps in the estimate:
 - Tests per tube is a placeholder. Quest's real limit is serum volume, so the SST and red top counts could be one off either way.
 - Not confirmed: whether one royal blue can be split across copper, zinc, selenium and chromium, or whether the EFA panel could use plasma from the Vitamin K lavender.
 
-- [ ] Say **push** to put it live.
+- [x] Pushed and live (2026-10-14).
 - [ ] Reply to Dee: how to look it up, and ask for the Quest collection page from the November draw.
 - [ ] When that page arrives, save it as lab confirmed (Look up → Enter the lab's count).
