@@ -21,9 +21,41 @@ On your phone, close and reopen the app first so it has the latest version.
   - Still open: exactly when Quest adds the Master Serum tube. The estimator still adds one to any order with a serum test, which is one SST too many on small orders. Dee's test draw (section 6) should help.
 - [ ] **The "wrong time" you mentioned:** the date is fixed, but the time problem is still open. Which screen, what does it show, and what did you expect?
 
-## 3. Say "go" on the next build (or change the suggestions)
+## 3. Next build: standing orders with schedules (planned 2026-10-15, not started)
 
-Planned, not started:
+**Why:** Dee's TPN order has tests on three schedules. The app only knows what's on today's order, so Dee has to remember that the Triglyceride is monthly and that May and November add 11 more tests.
+
+**Key constraint:** the app is a demo, so Dee can't enter the real patient. Schedules therefore live on a **standing order**: a named set of tests with no patient information, such as "TPN labs". Dee uses it in Look up. A demo patient can also be linked to one.
+
+### What it does
+
+- **Standing order** = a name plus groups of tests, each group with a frequency. Dee's "TPN labs" would be:
+  - Every 2 weeks: CBC, CMP, Magnesium, Phosphorus
+  - Monthly: Triglycerides
+  - May and November: Vitamins A, B12, E, K, D2/D3, EFA panel, Chromium, Copper, Manganese, Selenium, Zinc
+- **Frequencies** (enough for every order seen so far):
+  - Every visit
+  - Every N weeks, counted from a start date (the first draw)
+  - Monthly: due at the first draw of each calendar month
+  - Chosen months: due at the first draw in those months (e.g. May and November)
+- **Look up gets a "Standing orders" picker.** Pick "TPN labs" and a draw date (defaults to today). The app works out which tests are due that day and shows the tubes, with a line like "Due today: every-2-week labs + monthly Triglycerides. Not due: May/November labs (next: Nov 2026)." Any test can still be added or removed for that one draw.
+- **Create and edit standing orders** from Look up: name it, add tests the usual way, set each group's frequency. Saved on the device like everything else.
+- **Demo patients:** a patient can be linked to a standing order, so Today and the Pack list add the due tests automatically. One fictional patient gets a TPN-style standing order in the demo data, so the client sees it working.
+- **"Mark as drawn"** on a lookup records the date for that standing order, so "monthly" and "May/November" know what's already been done this month.
+
+### How it's built
+
+- Pure logic in `src/lib/schedule.ts`: `dueTests(standingOrder, date, history)`, with unit tests for each frequency, month boundaries, and a missed draw (e.g. no visit in early November means the first visit later in November still picks them up).
+- Data: `standingOrders` in the saved app state, with a seed example. A patient gets an optional `standingOrderId`, so the existing `orderedCodes` keeps working unchanged. This answers the earlier audit question about where `schedule` lives.
+- Tubes come from the existing lookup, so the confirmed lists (1 SST + 1 Lavender etc.) keep working. A due-date combination with no saved count shows as Estimated, as now.
+- Check in a real browser at phone and tablet size, as with the tour and Look up.
+
+### Questions before building
+
+- [ ] **Ask Dee:** is "every other week" counted from a fixed start date, or from the last draw (so a late draw shifts the next one)? And is "monthly Triglyceride" simply the first draw of each month?
+- [ ] **You:** include the "Mark as drawn" history in this build (my suggestion, since monthly and May/November depend on it), or leave it to the nurse to tick the extras?
+
+### Also planned (from before, still waiting for "go")
 
 - **Change log.** A record of every change (tube lists, order edits, completed visits, spare tubes, resets), with what changed and when. Every entry has a "who" field that shows "This device" for now, and becomes the person's name once accounts exist.
 - **Undo.**
@@ -32,8 +64,8 @@ Planned, not started:
   - "Restore" in the change log for mistakes noticed later.
 - **Leftovers from the audit.**
   - Replace one-off sizes with the design tokens.
-  - Add an empty `aliases` list to each test.
-  - Add an optional `schedule` next to each patient's order.
+  - ~~Add an `aliases` list to each test.~~ Done 2026-10-07.
+  - ~~Add an optional `schedule` next to each patient's order.~~ Replaced by standing orders above.
   - Add unit tests for the master serum and dedicated-tube rules.
 
 Suggestions waiting for your OK:
@@ -42,17 +74,16 @@ Suggestions waiting for your OK:
 2. Log the completed visit only, not each tube tapped as drawn.
 3. Build the audit leftovers in the same round as the log and undo, so there's one round of testing.
 
-Audit question: put `schedule` on the patient next to `orderedCodes` (my suggestion), or restructure into a separate `order` object? And add one example schedule to the demo data, such as P002's PT/INR weekly on Mondays, or none?
 
 ## 4. Client
 
 - [ ] Send the client the rundown email. There's a draft in `notes/client-email-draft.md`, which is on this computer only and not on GitHub.
 
-## 5. Guided tour with tester feedback (built 2026-09-29, not pushed yet)
+## 5. Guided tour with tester feedback (built 2026-09-29, live since 2026-09-30)
 
 "Take the tour" on the Today screen: 7 short steps, then a quick survey. For testers who agree, each tour adds one row to a Google Sheet. The details are in the README under "Guided tour".
 
-- [ ] Say **push** to put it live. Until the next step is done, the tour works but collects nothing.
+- [x] Pushed and live. Until the results sheet is set up, the tour works but collects nothing.
 - [ ] Set up the results sheet: create the Google Sheet, paste in `feedback/apps-script.gs`, deploy it as a web app, and add the URL as the `FEEDBACK_URL` repository variable on GitHub. The steps are in the README.
 - [ ] Take the tour on your phone once it's live, and check that your row shows up in the sheet.
 - [ ] Decide who to send it to, and write a short message inviting them.
